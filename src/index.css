@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+/* Definir variables de color slate para asegurar compatibilidad */
+:root {
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+  --color-slate-950: #020617;
+}
+
+/* Global styles */
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Background gradients for main containers */
+.main-container {
+  background:  #f8fafc;
+}
+
+html.dark .main-container {
+  background:  #0f172a;
+}
+
+/* Component styles */
+.bento-card {
+  border: solid 1px rgba(0, 0, 0, 0.05);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient text for titles */
+.gradient-text {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+html.dark .gradient-text {
+  background: linear-gradient(135deg, #60a5fa, #a78bfa, #38bdf8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Clases personalizadas para texto que aseguren el cambio de color */
+.text-slate-800 {
+  color: #1e293b !important;
+}
+
+html.dark .text-slate-800 {
+  color: #e2e8f0 !important;
+}
+
+.text-slate-200 {
+  color: #e2e8f0 !important;
+}
+
+html.dark .text-slate-200 {
+  color: #e2e8f0 !important;
+}
+
+.text-slate-600 {
+  color: #475569 !important;
+}
+
+html.dark .text-slate-600 {
+  color: #cbd5e1 !important;
+}
+
+.text-slate-300 {
+  color: #cbd5e1 !important;
+}
+
+html.dark .text-slate-300 {
+  color: #cbd5e1 !important;
+}
+
+/* Clases específicas para BentoCard */
+.bento-title {
+  color: #1e293b;
+}
+
+html.dark .bento-title {
+  color: #e2e8f0;
+}
+
+.bento-content {
+  color: #475569;
+}
+
+html.dark .bento-content {
+  color: #cbd5e1;
+}
+
+.bento-icon {
+  color: #475569;
+}
+
+html.dark .bento-icon {
+  color: #cbd5e1;
+}
+
+/* Clases específicas para la card de presentación */
+.presentation-title {
+  color: #020617; /* slate-950 */
+}
+
+html.dark .presentation-title {
+  color: #cbd5e1; /* slate-300 */
+}
+
+.presentation-description {
+  color: #334155; /* slate-700 */
+}
+
+html.dark .presentation-description {
+  color: #cbd5e1; /* slate-300 */
+}
+
+/* Clases para la card "Disponible para trabajar" - siempre texto oscuro porque el fondo es blanco */
+.availability-title {
+  color: #1e293b !important; /* slate-800 - siempre oscuro */
+}
+
+.availability-description {
+  color: #475569 !important; /* slate-600 - siempre oscuro */
+}
+
+/* Texto fuera del contenedor blanco - debe cambiar con el modo */
+.availability-subtitle {
+  color: #475569; /* slate-600 para modo claro */
+}
+
+html.dark .availability-subtitle {
+  color: #cbd5e1; /* slate-300 para modo oscuro */
+}
+
+/* Clases específicas para la card de proyectos */
+.projects-title {
+  color: #000000; /* negro para modo claro */
+}
+
+html.dark .projects-title {
+  color: #ffffff; /* blanco para modo oscuro */
+}
+
+.projects-arrow {
+  color: #000000; /* negro para modo claro */
+}
+
+html.dark .projects-arrow {
+  color: #ffffff; /* blanco para modo oscuro */
+}
+
+
+
