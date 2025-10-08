@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import BentoGrid from '../components/BentoGrid/BentoGrid';
 import BentoCard from '../components/BentoGrid/BentoCard';
+import ContactModal from '../components/ContactModal/ContactModal';
 import { aboutMe,} from '../data/projectsData';
 import { useDarkMode } from '../contexts/DarkModeContext';
 import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaPython, FaGitAlt, FaDownload } from 'react-icons/fa';
@@ -9,6 +10,7 @@ import { BiLogoPostgresql } from 'react-icons/bi';
 
 const Home = () => {
   const { isDarkMode, toggleDarkMode } = useDarkMode();
+  const [modalAbierto, setModalAbierto] = useState(false);
 
   return (
     <div className="main-container min-h-screen py-8 transition-colors duration-300">
@@ -311,7 +313,7 @@ const Home = () => {
           </div>
         </BentoCard>
 
-        {/*card de contacto*/}
+        {/* Card de contacto */}
         <BentoCard
           size="full"
           color="blue"
@@ -340,10 +342,10 @@ const Home = () => {
               </p>
             </div>
 
-            {/* Lado derecho - Botón de email */}
+            {/* Lado derecho - Botón */}
             <div className="ml-8">
-              <a
-                href="mailto:marco.cba2@gmail.com?subject=Hola%20Marco,%20tengo%20un%20proyecto%20en%20mente&body=Hola%20Marco,%0A%0AMe%20gustar%C3%ADa%20hablar%20contigo%20sobre%20un%20proyecto.%20%0A%0ASaludos!"
+              <button
+                onClick={() => setModalAbierto(true)}
                 className="flex items-center gap-4 p-5 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-xl hover:from-blue-600 hover:to-indigo-600 transition-all duration-300 group shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 <div className="bg-white/20 p-3 rounded-lg group-hover:bg-white/30 transition-colors">
@@ -352,16 +354,23 @@ const Home = () => {
                   </svg>
                 </div>
                 <div>
-                  <div className="font-bold text-base">Enviar Email</div>
-                  <div className="text-blue-100 text-sm">marco.cba2@gmail.com</div>
+                  <div className="font-bold text-base">Enviar Mensaje</div>
+                  <div className="text-blue-100 text-sm">Completa el formulario</div>
                 </div>
                 <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </a>
+              </button>
             </div>
           </div>
         </BentoCard>
+
+        {/* Modal de Contacto */}
+        <ContactModal 
+          isOpen={modalAbierto} 
+          onClose={() => setModalAbierto(false)} 
+        />
+      
       </BentoGrid>
     </div>
   );
