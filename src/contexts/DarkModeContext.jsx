@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 
 const DarkModeContext = createContext();
 
@@ -11,10 +11,12 @@ export const useDarkMode = () => {
 };
 
 export const DarkModeProvider = ({ children }) => {
-  // Inicializar en modo claro por defecto
+  
+  // Inicializar en modo oscuro por defecto
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
+    
     // Cargar la preferencia del localStorage al montar el componente
     try {
       const savedMode = localStorage.getItem('portfolio-dark-mode');
