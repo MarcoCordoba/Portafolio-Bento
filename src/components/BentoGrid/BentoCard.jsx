@@ -14,13 +14,13 @@ const BentoCard = ({
 }) => {
   const sizeClasses = {
     sm: 'col-span-1 row-span-1',
-    md: 'col-span-2 row-span-1', 
-    lg: 'col-span-2 row-span-2',
-    xl: 'col-span-3 row-span-2',
-    full: 'col-span-6 row-span-1',
-    xxl: 'col-span-3 row-span-2',
-    hero: 'col-span-4 row-span-2',
-    wide: 'col-span-3 row-span-1',
+    md: 'col-span-1 sm:col-span-2 row-span-1', 
+    lg: 'col-span-1 sm:col-span-2 row-span-2',
+    xl: 'col-span-1 sm:col-span-2 md:col-span-3 row-span-2',
+    full: 'col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-6 row-span-1',
+    xxl: 'col-span-1 sm:col-span-2 md:col-span-3 row-span-2',
+    hero: 'col-span-1 sm:col-span-2 md:col-span-4 row-span-2',
+    wide: 'col-span-1 row-span-2 sm:col-span-2 sm:row-span-1 md:col-span-3',
     tall: 'col-span-1 row-span-2'
   };
 

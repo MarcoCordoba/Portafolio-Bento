@@ -98,51 +98,50 @@ export default function ContactModal({ isOpen, onClose }) {
   return (
     <div 
       style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)' }}
-      className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center p-4 z-50 animate-fade-in"
+      className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center p-2 sm:p-4 z-50 animate-fade-in"
       onClick={closeModal}
     >
       <div 
-        className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-md w-full transform transition-all duration-300 animate-slide-up"
+        className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto transform transition-all duration-300 animate-slide-up"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="bg-gradient-to-r from-blue-500 to-indigo-500 p-6 rounded-t-2xl relative">
+        <div className="bg-gradient-to-r from-blue-500 to-indigo-500 p-4 sm:p-6 rounded-t-2xl relative">
           <button
             onClick={closeModal}
-            className="absolute top-4 right-4 text-white hover:bg-white hover:bg-opacity-20 rounded-full p-2 transition-all duration-200"
+            className="absolute top-2 right-2 sm:top-4 sm:right-4 text-white hover:bg-white hover:bg-opacity-20 rounded-full p-1.5 sm:p-2 transition-all duration-200"
           >
-            <X size={24} />
+            <X size={20} className="sm:w-6 sm:h-6" />
           </button>
-          <h2 className="text-2xl font-bold text-white">Contáctame</h2>
-          <p className="text-blue-100 mt-1">Envíame un mensaje y te responderé pronto</p>
+          <h2 className="text-xl sm:text-2xl font-bold text-white pr-8">Contáctame</h2>
+          <p className="text-blue-100 mt-1 text-sm sm:text-base">Envíame un mensaje y te responderé pronto</p>
         </div>
 
-        <div className="p-6">
-          {submitSuccess ? (
-            <div className="text-center py-8">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Send className="text-green-600" size={32} />
+        <div className="p-4 sm:p-6">{submitSuccess ? (
+            <div className="text-center py-6 sm:py-8">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Send className="text-green-600" size={24} />
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 dark:text-slate-200 mb-2">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-slate-200 mb-2">
                 ¡Mensaje enviado!
               </h3>
-              <p className="text-gray-600 dark:text-slate-400">
+              <p className="text-sm sm:text-base text-gray-600 dark:text-slate-400">
                 Gracias por contactarme. Te responderé pronto.
               </p>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-2">
                   Nombre
                 </label>
                 <div className="relative">
-                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
                   <input
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={(e) => handleChange(e.target)}
-                    className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all bg-white dark:bg-slate-700 dark:text-slate-200 ${
+                    className={`w-full pl-10 pr-4 py-2.5 sm:py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all bg-white dark:bg-slate-700 dark:text-slate-200 text-sm sm:text-base ${
                       errors.name 
                         ? 'border-red-500 focus:ring-red-500' 
                         : 'border-gray-300 dark:border-slate-600 focus:ring-blue-500'

@@ -41,7 +41,7 @@ export const projectsData = [
     image: Notas,
     githubUrl1: "https://github.com/MarcoCordoba/App-Notas-Frontend.git",
     githubUrl2: "https://github.com/MarcoCordoba/App-Notas-Backend.git",
-    category: "Full Stack"
+    category: "web app"
   }
 ];
 
