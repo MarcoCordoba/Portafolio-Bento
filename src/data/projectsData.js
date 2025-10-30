@@ -50,6 +50,6 @@ export const aboutMe = {
   title: "Desarrollador Full Stack",
   description: "Soy estudiante avanzado de Ingeniería en Sistemas y desarrollador Full Stack, con experiencia en proyectos web que me permiten integrar teoría académica con práctica real.",
   linkedin: "https://www.linkedin.com/in/marco-cordoba-/",
-  resume: "/Cordoba_Marco_CV.pdf",
+  resume: "/MarcoCordoba_CV.pdf",
   profileImage: "/images/profile/Perfil.png" 
 };
