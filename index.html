@@ -7,37 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Marco Cordoba | Desarrollador Web</title>
     <script>
-      (() => {
-        const STORAGE_KEY = 'portfolio-dark-mode';
-        const MEDIA_QUERY = '(prefers-color-scheme: dark)';
-        const root = document.documentElement;
-
-        const applyTheme = (isDark) => {
-          const preferredScheme = isDark ? 'dark' : 'light';
-          root.classList.toggle('dark', isDark);
-          root.style.setProperty('color-scheme', preferredScheme);
-          root.dataset.theme = preferredScheme;
-
-          const meta = document.querySelector('meta[name="color-scheme"]');
-          if (meta) {
-            meta.setAttribute('content', isDark ? 'dark light' : 'light dark');
-          }
-        };
-
+      // Aplicar tema antes de que cargue React para evitar parpadeos
+      (function() {
         try {
-          const storedValue = window.localStorage.getItem(STORAGE_KEY);
-          if (storedValue !== null) {
-            applyTheme(JSON.parse(storedValue));
-            return;
+          const darkMode = JSON.parse(localStorage.getItem('portfolio-dark-mode'));
+          if (darkMode === true) {
+            document.documentElement.classList.add('dark');
+          } else if (darkMode === false) {
+            document.documentElement.classList.remove('dark');
+          } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
           }
-        } catch (error) {
-          console.warn('No se pudo recuperar la preferencia de modo oscuro antes de la carga:', error);
-        }
-
-        if (window.matchMedia) {
-          applyTheme(window.matchMedia(MEDIA_QUERY).matches);
-        } else {
-          applyTheme(true);
+        } catch (e) {
+          // Si hay error, usar preferencia del sistema si está disponible
+          if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+          }
         }
       })();
     </script>

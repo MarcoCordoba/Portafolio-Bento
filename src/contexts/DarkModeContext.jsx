@@ -38,17 +38,7 @@ const applyDocumentTheme = (isDark) => {
   }
 
   const root = document.documentElement;
-  const preferredScheme = isDark ? 'dark' : 'light';
-
   root.classList.toggle('dark', isDark);
-  root.style.setProperty('color-scheme', preferredScheme);
-  root.dataset.theme = preferredScheme;
-
-  const meta = document.querySelector('meta[name="color-scheme"]');
-  if (meta) {
-    const contentValue = isDark ? 'dark light' : 'light dark';
-    meta.setAttribute('content', contentValue);
-  }
 };
 
 export const useDarkMode = () => {
