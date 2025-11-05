@@ -1,53 +1,13 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta name="color-scheme" content="light dark">
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/images/profile/Perfil.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
-    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
     <title>Marco Cordoba | Desarrollador Web</title>
-    <script>
-      // Script inline para aplicar dark mode antes de que cargue React
-      // Esto previene el "flash" de modo claro
-      (function() {
-        try {
-          const savedMode = localStorage.getItem('portfolio-dark-mode');
-          const isDark = savedMode !== null ? JSON.parse(savedMode) : true;
-          if (isDark) {
-            document.documentElement.classList.add('dark');
-          } else {
-            document.documentElement.classList.remove('dark');
-          }
-        } catch (e) {
-          // En caso de error, aplicar modo oscuro por defecto
-          document.documentElement.classList.add('dark');
-        }
-      })();
-    </script>
-    <style>
-      /* Estilos inline para evitar flash de contenido sin estilo */
-      html { 
-        background-color: #0f172a;
-        color: #f1f5f9;
-      }
-      html.dark { 
-        background-color: #0f172a;
-        color: #f1f5f9;
-      }
-      html:not(.dark) { 
-        background-color: #f8fafc;
-        color: #0f172a;
-      }
-      body { 
-        background-color: inherit;
-        color: inherit;
-        margin: 0;
-      }
-    </style>
   </head>
-  <body>
+  <body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

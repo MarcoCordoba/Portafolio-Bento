@@ -12,35 +12,27 @@ export const useDarkMode = () => {
 
 export const DarkModeProvider = ({ children }) => {
   
-  // Función para obtener el modo inicial
-  const getInitialMode = () => {
+  // Inicializar en modo oscuro por defecto
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  useEffect(() => {
+    
+    // Cargar la preferencia del localStorage al montar el componente
     try {
       const savedMode = localStorage.getItem('portfolio-dark-mode');
       if (savedMode !== null) {
-        return JSON.parse(savedMode);
+        const parsedMode = JSON.parse(savedMode);
+        setIsDarkMode(parsedMode);
+        // Aplicar inmediatamente la clase
+        if (parsedMode) {
+          document.documentElement.classList.add('dark');
+        }
       }
     } catch (error) {
       console.error('Error loading dark mode preference:', error);
+      // En caso de error, limpiar localStorage
       localStorage.removeItem('portfolio-dark-mode');
     }
-    return true; // modo oscuro por defecto
-  };
-
-  // Inicializar con el valor correcto desde el principio
-  const [isDarkMode, setIsDarkMode] = useState(getInitialMode);
-
-  // Aplicar la clase inmediatamente al cargar
-  useEffect(() => {
-    const applyDarkMode = (darkMode) => {
-      const htmlElement = document.documentElement;
-      if (darkMode) {
-        htmlElement.classList.add('dark');
-      } else {
-        htmlElement.classList.remove('dark');
-      }
-    };
-
-    applyDarkMode(isDarkMode);
   }, []);
 
   useEffect(() => {
@@ -52,11 +44,10 @@ export const DarkModeProvider = ({ children }) => {
     }
 
     // Aplicar o remover la clase 'dark' del elemento html
-    const htmlElement = document.documentElement;
     if (isDarkMode) {
-      htmlElement.classList.add('dark');
+      document.documentElement.classList.add('dark');
     } else {
-      htmlElement.classList.remove('dark');
+      document.documentElement.classList.remove('dark');
     }
   }, [isDarkMode]);
 
