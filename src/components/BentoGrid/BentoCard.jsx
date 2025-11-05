@@ -27,12 +27,12 @@ const BentoCard = ({
 
 
   const colorClasses = {
-    white: 'bg-white/70 dark:bg-white/10 border-slate-200/50 dark:border-slate-600/30 backdrop-blur-sm',
-    blue: 'bg-gradient-to-br from-blue-50/70 to-blue-100/70 dark:from-blue-50/10 dark:to-blue-100/10 border-blue-200/50 dark:border-blue-400/30 backdrop-blur-sm',
-    purple: 'bg-gradient-to-br from-purple-50/70 to-purple-100/70 dark:from-purple-50/10 dark:to-purple-100/10 border-purple-200/50 dark:border-purple-400/30 backdrop-blur-sm',
-    green: 'bg-gradient-to-br from-green-50/70 to-green-100/70 dark:from-green-50/10 dark:to-green-100/10 border-green-200/50 dark:border-green-400/30 backdrop-blur-sm',
-    orange: 'bg-gradient-to-br from-orange-50/70 to-orange-100/70 dark:from-orange-50/10 dark:to-orange-100/10 border-orange-200/50 dark:border-orange-400/30 backdrop-blur-sm',
-    gray: 'bg-gradient-to-br from-gray-50/70 to-gray-100/70 dark:from-gray-50/10 dark:to-gray-100/10 border-gray-200/50 dark:border-gray-400/30 backdrop-blur-sm'
+    white: 'card-bg-white dark:card-bg-dark border-slate-200 dark:border-slate-700',
+    blue: 'card-bg-blue dark:card-bg-blue-dark border-blue-200 dark:border-blue-700',
+    purple: 'card-bg-purple dark:card-bg-purple-dark border-purple-200 dark:border-purple-700',
+    green: 'card-bg-green dark:card-bg-green-dark border-green-200 dark:border-green-700',
+    orange: 'card-bg-orange dark:card-bg-orange-dark border-orange-200 dark:border-orange-700',
+    gray: 'card-bg-gray dark:card-bg-gray-dark border-gray-200 dark:border-gray-700'
   };
 
   const cardContent = (
