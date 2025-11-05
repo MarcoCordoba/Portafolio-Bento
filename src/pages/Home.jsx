@@ -20,7 +20,6 @@ const Home = () => {
         {/* card de presentacion*/}
         <BentoCard
           size="hero"
-          color="blue"
           className="relative overflow-hidden"
         >
           <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 h-full">
@@ -51,7 +50,6 @@ const Home = () => {
           {/*card de experiencia*/}
           <BentoCard
             size="sm"
-            color="gray"
             className="flex flex-col items-center justify-center text-center col-span-1 sm:col-span-1"
           >
             <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800 dark:text-slate-200 mb-1 sm:mb-2">
@@ -65,7 +63,6 @@ const Home = () => {
           {/*card de cv*/}
           <BentoCard
             size="sm"
-            color="blue"
             isClickable={true}
             link={aboutMe.resume}
             className="flex flex-col items-center justify-center text-center h-full relative col-span-1 sm:col-span-1"
@@ -84,7 +81,6 @@ const Home = () => {
           {/*card de linkedin*/}
           <BentoCard
             size="sm"
-            color="blue"
             isClickable={true}
             link={aboutMe.linkedin}
             className="flex items-center justify-center h-full col-span-1 sm:col-span-1"
@@ -97,7 +93,6 @@ const Home = () => {
           {/*card de modo claro/oscuro*/}
           <BentoCard
             size="sm"
-            color="orange"
             className="flex items-center justify-center h-full col-span-1 sm:col-span-1"
           >
             <div className="relative">
@@ -132,7 +127,6 @@ const Home = () => {
           {/*card de proyectos*/}
           <BentoCard
             size="xl"
-            color="purple"
             isClickable={true}
             link="/projects"
             className="h-full relative"
@@ -171,7 +165,6 @@ const Home = () => {
         {/*card de tecnologias*/}
         <BentoCard
           size="wide"
-          color="green"
           className="flex items-center justify-center h-full p-3 sm:p-4"
         >
           <div className="grid grid-cols-2 grid-rows-5 sm:grid-cols-5 sm:grid-rows-2 gap-4 sm:gap-4 w-full max-w-md">
@@ -243,7 +236,6 @@ const Home = () => {
         {/*card de mi ubicacion*/}      
         <BentoCard
           size="md"
-          color="purple"
           className="flex flex-col items-center justify-center text-center h-full relative overflow-hidden"
         >
           {/* Main location pin with pulse animation */}
@@ -274,7 +266,6 @@ const Home = () => {
         {/*card de disponibilidad*/}
         <BentoCard
           size="md"
-          color="blue"
           className="relative overflow-hidden h-full md:col-span-3"
         >
           {/* Contenedor principal centrado */}
@@ -305,7 +296,6 @@ const Home = () => {
         {/*card de gif decorativo*/}
         <BentoCard
           size="sm"
-          color="gray"
           className="relative overflow-hidden row-span-2 sm:row-span-1"
         >
           <div className="absolute inset-0">
@@ -320,7 +310,6 @@ const Home = () => {
         {/* Card de contacto */}
         <BentoCard
           size="full"
-          color="blue"
           className="h-full relative overflow-hidden"
         >
           <div className="relative z-10 flex items-center justify-between h-full w-full p-3 sm:p-4 md:p-6">

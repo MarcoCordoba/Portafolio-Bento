@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { X, Send, User, Mail, MessageSquare } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { useDarkMode } from '../../contexts/DarkModeContext';
 
 export default function ContactModal({ isOpen, onClose }) {
+  const { isDarkMode } = useDarkMode();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -102,7 +104,7 @@ export default function ContactModal({ isOpen, onClose }) {
       onClick={closeModal}
     >
       <div 
-        className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto transform transition-all duration-300 animate-slide-up"
+        className={`${isDarkMode ? 'bg-slate-900' : 'bg-white'} rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto transform transition-all duration-300 animate-slide-up transition-colors`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="bg-gradient-to-r from-blue-500 to-indigo-500 p-4 sm:p-6 rounded-t-2xl relative">
@@ -118,89 +120,99 @@ export default function ContactModal({ isOpen, onClose }) {
 
         <div className="p-4 sm:p-6">{submitSuccess ? (
             <div className="text-center py-6 sm:py-8">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Send className="text-green-600" size={24} />
+              <div className={`w-12 h-12 sm:w-16 sm:h-16 ${isDarkMode ? 'bg-green-900/30' : 'bg-green-100'} rounded-full flex items-center justify-center mx-auto mb-4`}>
+                <Send className={`${isDarkMode ? 'text-green-400' : 'text-green-600'}`} size={24} />
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-slate-200 mb-2">
+              <h3 className={`text-lg sm:text-xl font-semibold ${isDarkMode ? 'text-slate-200' : 'text-slate-800'} mb-2`}>
                 ¡Mensaje enviado!
               </h3>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-slate-400">
+              <p className={`text-sm sm:text-base ${isDarkMode ? 'text-slate-300' : 'text-slate-600'}`}>
                 Gracias por contactarme. Te responderé pronto.
               </p>
             </div>
           ) : (
             <div className="space-y-3 sm:space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-2">
+                <label className={`block text-sm font-medium ${isDarkMode ? 'text-slate-300' : 'text-slate-700'} mb-2`}>
                   Nombre
                 </label>
                 <div className="relative">
-                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+                  <User className={`absolute left-3 top-1/2 transform -translate-y-1/2 ${isDarkMode ? 'text-slate-500' : 'text-slate-400'}`} size={18} />
                   <input
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={(e) => handleChange(e.target)}
-                    className={`w-full pl-10 pr-4 py-2.5 sm:py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all bg-white dark:bg-slate-700 dark:text-slate-200 text-sm sm:text-base ${
+                    className={`w-full pl-10 pr-4 py-2.5 sm:py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all transition-colors ${
+                      isDarkMode ? 'bg-slate-800 text-slate-100 border-slate-600 placeholder:text-slate-500' : 'bg-white text-slate-900 border-slate-300 placeholder:text-slate-400'
+                    } text-sm sm:text-base ${
                       errors.name 
                         ? 'border-red-500 focus:ring-red-500' 
-                        : 'border-gray-300 dark:border-slate-600 focus:ring-blue-500'
+                        : 'focus:ring-blue-500'
                     }`}
                     placeholder="Tu nombre completo"
                   />
                 </div>
-                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+                {errors.name && <p className={`text-sm mt-1 ${isDarkMode ? 'text-red-400' : 'text-red-500'}`}>{errors.name}</p>}
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-2">
+                <label className={`block text-sm font-medium ${isDarkMode ? 'text-slate-300' : 'text-slate-700'} mb-2`}>
                   Email
                 </label>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                  <Mail className={`absolute left-3 top-1/2 transform -translate-y-1/2 ${isDarkMode ? 'text-slate-500' : 'text-slate-400'}`} size={20} />
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={(e) => handleChange(e.target)}
-                    className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all bg-white dark:bg-slate-700 dark:text-slate-200 ${
+                    className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all transition-colors ${
+                      isDarkMode ? 'bg-slate-800 text-slate-100 border-slate-600 placeholder:text-slate-500' : 'bg-white text-slate-900 border-slate-300 placeholder:text-slate-400'
+                    } ${
                       errors.email 
                         ? 'border-red-500 focus:ring-red-500' 
-                        : 'border-gray-300 dark:border-slate-600 focus:ring-blue-500'
+                        : 'focus:ring-blue-500'
                     }`}
                     placeholder="tu@email.com"
                   />
                 </div>
-                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+                {errors.email && <p className={`text-sm mt-1 ${isDarkMode ? 'text-red-400' : 'text-red-500'}`}>{errors.email}</p>}
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-slate-300 mb-2">
+                <label className={`block text-sm font-medium ${isDarkMode ? 'text-slate-300' : 'text-slate-700'} mb-2`}>
                   Mensaje
                 </label>
                 <div className="relative">
-                  <MessageSquare className="absolute left-3 top-3 text-gray-400" size={20} />
+                  <MessageSquare className={`absolute left-3 top-3 ${isDarkMode ? 'text-slate-500' : 'text-slate-400'}`} size={20} />
                   <textarea
                     name="message"
                     value={formData.message}
                     onChange={(e) => handleChange(e.target)}
                     rows="4"
-                    className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all resize-none bg-white dark:bg-slate-700 dark:text-slate-200 ${
+                    className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all transition-colors resize-none ${
+                      isDarkMode ? 'bg-slate-800 text-slate-100 border-slate-600 placeholder:text-slate-500' : 'bg-white text-slate-900 border-slate-300 placeholder:text-slate-400'
+                    } ${
                       errors.message 
                         ? 'border-red-500 focus:ring-red-500' 
-                        : 'border-gray-300 dark:border-slate-600 focus:ring-blue-500'
+                        : 'focus:ring-blue-500'
                     }`}
                     placeholder="Escribe tu mensaje aquí..."
                   />
                 </div>
-                {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
+                {errors.message && <p className={`text-sm mt-1 ${isDarkMode ? 'text-red-400' : 'text-red-500'}`}>{errors.message}</p>}
               </div>
 
               <div className="flex gap-3 pt-4">
                 <button
                   type="button"
                   onClick={closeModal}
-                  className="flex-1 px-4 py-3 border border-gray-300 dark:border-slate-600 text-gray-700 dark:text-slate-300 rounded-lg hover:bg-gray-50 dark:hover:bg-slate-700 transition-all duration-200 font-medium"
+                  className={`flex-1 px-4 py-3 border rounded-lg transition-all duration-200 font-medium ${
+                    isDarkMode 
+                      ? 'border-slate-600 text-slate-300 bg-slate-800 hover:bg-slate-700' 
+                      : 'border-slate-300 text-slate-700 bg-white hover:bg-slate-100'
+                  }`}
                 >
                   Cancelar
                 </button>
