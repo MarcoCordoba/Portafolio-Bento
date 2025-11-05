@@ -1,6 +1,55 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
 
 const DarkModeContext = createContext();
+
+const STORAGE_KEY = 'portfolio-dark-mode';
+const MEDIA_QUERY = '(prefers-color-scheme: dark)';
+
+const getStoredPreference = () => {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+
+  try {
+    const storedValue = window.localStorage.getItem(STORAGE_KEY);
+    return storedValue !== null ? JSON.parse(storedValue) : null;
+  } catch (error) {
+    console.warn('No se pudo leer la preferencia de modo oscuro almacenada:', error);
+    return null;
+  }
+};
+
+const resolveInitialDarkMode = () => {
+  const storedPreference = getStoredPreference();
+  if (storedPreference !== null) {
+    return storedPreference;
+  }
+
+  if (typeof window !== 'undefined' && window.matchMedia) {
+    return window.matchMedia(MEDIA_QUERY).matches;
+  }
+
+  return true;
+};
+
+const applyDocumentTheme = (isDark) => {
+  if (typeof document === 'undefined') {
+    return;
+  }
+
+  const root = document.documentElement;
+  const preferredScheme = isDark ? 'dark' : 'light';
+
+  root.classList.toggle('dark', isDark);
+  root.style.setProperty('color-scheme', preferredScheme);
+  root.dataset.theme = preferredScheme;
+
+  const meta = document.querySelector('meta[name="color-scheme"]');
+  if (meta) {
+    const contentValue = isDark ? 'dark light' : 'light dark';
+    meta.setAttribute('content', contentValue);
+  }
+};
 
 export const useDarkMode = () => {
   const context = useContext(DarkModeContext);
@@ -11,48 +60,52 @@ export const useDarkMode = () => {
 };
 
 export const DarkModeProvider = ({ children }) => {
-  
-  // Inicializar en modo oscuro por defecto
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(resolveInitialDarkMode);
+  const [hasStoredPreference, setHasStoredPreference] = useState(() => getStoredPreference() !== null);
+  const storageUnavailableRef = useRef(false);
 
   useEffect(() => {
-    
-    // Cargar la preferencia del localStorage al montar el componente
+    applyDocumentTheme(isDarkMode);
+
+    if (typeof window === 'undefined' || storageUnavailableRef.current) {
+      return;
+    }
+
     try {
-      const savedMode = localStorage.getItem('portfolio-dark-mode');
-      if (savedMode !== null) {
-        const parsedMode = JSON.parse(savedMode);
-        setIsDarkMode(parsedMode);
-        // Aplicar inmediatamente la clase
-        if (parsedMode) {
-          document.documentElement.classList.add('dark');
-        }
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(isDarkMode));
+      if (!hasStoredPreference) {
+        setHasStoredPreference(true);
       }
     } catch (error) {
-      console.error('Error loading dark mode preference:', error);
-      // En caso de error, limpiar localStorage
-      localStorage.removeItem('portfolio-dark-mode');
+      storageUnavailableRef.current = true;
+      console.warn('No se pudo guardar la preferencia de modo oscuro:', error);
     }
-  }, []);
+  }, [isDarkMode, hasStoredPreference]);
 
   useEffect(() => {
-    // Guardar en localStorage cada vez que cambie el estado
-    try {
-      localStorage.setItem('portfolio-dark-mode', JSON.stringify(isDarkMode));
-    } catch (error) {
-      console.error('Error saving dark mode preference:', error);
+    if (typeof window === 'undefined' || !window.matchMedia) {
+      return;
     }
 
-    // Aplicar o remover la clase 'dark' del elemento html
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
+    const mediaQuery = window.matchMedia(MEDIA_QUERY);
+
+    const handlePreferenceChange = (event) => {
+      if (storageUnavailableRef.current || !hasStoredPreference) {
+        setIsDarkMode(event.matches);
+      }
+    };
+
+    try {
+      mediaQuery.addEventListener('change', handlePreferenceChange);
+      return () => mediaQuery.removeEventListener('change', handlePreferenceChange);
+    } catch (error) {
+      mediaQuery.addListener(handlePreferenceChange);
+      return () => mediaQuery.removeListener(handlePreferenceChange);
     }
-  }, [isDarkMode]);
+  }, [hasStoredPreference]);
 
   const toggleDarkMode = () => {
-    setIsDarkMode(prev => !prev);
+    setIsDarkMode((prev) => !prev);
   };
 
   const value = {
