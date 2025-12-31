@@ -1,16 +1,16 @@
 import Conversor from '../assets/images/projects/Conversor.png';
 import Notas from '../assets/images/projects/Home-notas.png';
 import Scraping from '../assets/images/projects/Scraping-web.png'
+import Reservas from '../assets/images/projects/Gestor-reservas.png'
 
 export const projectsData = [
   {
     id: 1,
-    title: "E-commerce App",
-    description: "Aplicación full-stack de e-commerce con carrito de compras, sistema de pagos, gestión de usuarios y panel administrativo. Incluye autenticación, filtros avanzados y diseño responsive.",
-    technologies: ["React", "Node.js", "MongoDB", "Express", "Stripe"],
-    image: "https://via.placeholder.com/400x250?text=E-commerce+App",
-    githubUrl1: "https://github.com/username/ecommerce-frontend",
-    githubUrl2: "https://github.com/username/ecommerce-backend",
+    title: "Gestor de reservas temporales",
+    description: "Aplicación web para la administración de alquileres temporales. Desplegada en la nube. Contine: Gestión de Propiedades con, Sistema de Reservas, Control de disponibilidad con calendario interactivo, Administración de Clientes, Panel de estadísticas, ingresos y estado de reservas en tiempo real, Historial Completo, Autenticación Segura",
+    technologies: ["React", "Nest.js", "PostgreSQL", "Javascript", "TypeScript" ,"tailwindcss", "Docker", "Render", "Vercel", "Neon"],
+    image: Reservas,
+    demoUrl: "https://gestion-reservas-front.vercel.app/", // Enlace a la página desplegada
     category: "Full Stack"
   },
   {
@@ -19,6 +19,9 @@ export const projectsData = [
     description: "Aplicación web que realiza web scraping de tres tiendas online, almacenando los productos (categoria, imagenes, precio, etc.) obtenidos en una base de datos. La información se procesa y muestra en tiempo real desde la propia web, permitiendo visualizar y comparar los datos extraídos de manera dinámica.",
     technologies: ["React", "Javascript", "tailwindcss", "django", "python", "Sqlite3"],
     image: Scraping,
+    // Opción 1: Usar demoUrl si el proyecto está desplegado
+    // demoUrl: "https://tu-scraping-desplegado.vercel.app",
+    // Opción 2: Usar enlaces de GitHub si no está desplegado
     githubUrl1: "https://github.com/MarcoCordoba/Scraping_Front.git",
     githubUrl2: "https://github.com/MarcoCordoba/Scraping-Api.git",
     category: "Web App"
@@ -29,8 +32,8 @@ export const projectsData = [
     description: "Aplicación web que permite convertir entre diferentes monedas utilizando tasas de cambio en tiempo real obtenidas de una API externa.",
     technologies: ["Javascript", "React", "API de ExchangeRate (v6)", "Css"],
     image: Conversor,
+    // Puedes usar demoUrl o githubUrl1/githubUrl2 según prefieras
     githubUrl1: "https://github.com/MarcoCordoba/Conversos-Monedas.git",
-    githubUrl2: null,
     category: "Web App"
   },
   {
@@ -39,6 +42,7 @@ export const projectsData = [
     description: "Aplicacion web para gestionar notas personales, elaborado con react y js en el front y el back con python, django, postgres. el sistema cuenta con inicio y registro de usuarios mediante JWT",
     technologies: ["React", "Javascript", "CSS", "Python", "Django", "PostgreSQL"],
     image: Notas,
+    // Puedes usar demoUrl o githubUrl1/githubUrl2 según prefieras
     githubUrl1: "https://github.com/MarcoCordoba/App-Notas-Frontend.git",
     githubUrl2: "https://github.com/MarcoCordoba/App-Notas-Backend.git",
     category: "web app"
