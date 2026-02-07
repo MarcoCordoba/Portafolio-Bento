@@ -7,34 +7,27 @@ export const projectsData = [
   {
     id: 1,
     title: "Gestor de reservas temporales",
-    description: "Aplicación web para la administración de alquileres temporales. Desplegada en la nube. Contine: Gestión de Propiedades con, Sistema de Reservas, Control de disponibilidad con calendario interactivo, Administración de Clientes, Panel de estadísticas, ingresos y estado de reservas en tiempo real, Historial Completo, Autenticación Segura",
-    technologies: ["React", "Nest.js", "PostgreSQL", "Javascript", "TypeScript" ,"tailwindcss", "Docker", "Render", "Vercel", "Neon"],
+    description: "Aplicación web para la administración de alquileres temporales. Desplegada en la nube. El sistema contiene: Sistema de Reservas, Control de disponibilidad con calendario interactivo, Administración de Clientes, Panel de estadísticas, ingresos y estado de reservas en tiempo real, Historial Completo, Autenticación Segura",
+    technologies: ["React", "Javascript", "tailwindcss", "Nest.js", "TypeScript" , "PostgreSQL", "TypeORM" ,"Docker", "Render", "Vercel", "Neon"],
     image: Reservas,
-    demoUrl: "https://gestion-reservas-front.vercel.app/", // Enlace a la página desplegada
-    category: "Full Stack"
+    demoUrl: "https://gestion-reservas-front.vercel.app/" // Enlace a la página desplegada
   },
   {
     id: 2,
     title: "Scraping web",
-    description: "Aplicación web que realiza web scraping de tres tiendas online, almacenando los productos (categoria, imagenes, precio, etc.) obtenidos en una base de datos. La información se procesa y muestra en tiempo real desde la propia web, permitiendo visualizar y comparar los datos extraídos de manera dinámica.",
+    description: "Aplicación web que realiza web scraping de tres tiendas online, almacenando los productos (categoria, imagenes, precio, etc.) obtenidos en una base de datos. La información se procesa y muestra en tiempo real desde la propia web, permitiendo visualizar y comparar los datos extraídos de manera dinámica con la posibilidad de aplicar diferentes filtros.",
     technologies: ["React", "Javascript", "tailwindcss", "django", "python", "Sqlite3"],
     image: Scraping,
-    // Opción 1: Usar demoUrl si el proyecto está desplegado
-    // demoUrl: "https://tu-scraping-desplegado.vercel.app",
-    // Opción 2: Usar enlaces de GitHub si no está desplegado
     githubUrl1: "https://github.com/MarcoCordoba/Scraping_Front.git",
-    githubUrl2: "https://github.com/MarcoCordoba/Scraping-Api.git",
-    category: "Web App"
+    githubUrl2: "https://github.com/MarcoCordoba/Scraping-Api.git"
   },
   {
     id: 3,
     title: "Conversor de Monedas",
-    description: "Aplicación web que permite convertir entre diferentes monedas utilizando tasas de cambio en tiempo real obtenidas de una API externa.",
-    technologies: ["Javascript", "React", "API de ExchangeRate (v6)", "Css"],
+    description: "Aplicación web que permite convertir entre diferentes monedas utilizando tasas de cambio en tiempo real.Los datos de las tasas de cambio son obtenidas de una API externa.",
+    technologies: ["Javascript", "Css", "React", "API de ExchangeRate (v6)"],
     image: Conversor,
-    // Puedes usar demoUrl o githubUrl1/githubUrl2 según prefieras
-    githubUrl1: "https://github.com/MarcoCordoba/Conversos-Monedas.git",
-    category: "Web App"
+    githubUrl1: "https://github.com/MarcoCordoba/Conversos-Monedas.git"
   },
   {
     id: 4,
@@ -44,15 +37,14 @@ export const projectsData = [
     image: Notas,
     // Puedes usar demoUrl o githubUrl1/githubUrl2 según prefieras
     githubUrl1: "https://github.com/MarcoCordoba/App-Notas-Frontend.git",
-    githubUrl2: "https://github.com/MarcoCordoba/App-Notas-Backend.git",
-    category: "web app"
+    githubUrl2: "https://github.com/MarcoCordoba/App-Notas-Backend.git"
   }
 ];
 
 export const aboutMe = {
   name: "Hola, soy Marco Cordoba",
   title: "Desarrollador Full Stack",
-  description: "Soy estudiante avanzado de Ingeniería en Sistemas y desarrollador Full Stack, con experiencia en proyectos web que me permiten integrar teoría académica con práctica real.",
+  description: "Soy estudiante de 5to año de Ingeniería en Sistemas y desarrollador Full Stack, con experiencia en proyectos web que me permiten integrar teoría académica con práctica real.",
   linkedin: "https://www.linkedin.com/in/marco-cordoba-/",
   resume: "/MarcoCordoba_CV.pdf",
   profileImage: "/images/profile/Perfil.png" 
